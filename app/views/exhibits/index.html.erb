@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body class="galleryBody">
+    <h1>Beautiful gallery!</h1>
+    <div style="text-align:center">
+      <%= link_to 'Back to the personal Gallery', gallery_start_path, class:"galleryButton"%>
+    </div>
+    <br><br><br>
+    <table width="600" align="center">
+      <% @exhibits.each do |exhibit| %>
+
+
+        <tr>
+          <td colspan="2"><%= image_tag(exhibit.img_url, class: "galleryImage") %></td>
+        </tr>
+        <tr>
+          <td><%= exhibit.artwork_name %></td>
+          <td><%= exhibit.artist_name %></td>
+        </tr>
+        <tr>
+          <td colspan="2"><%= exhibit.information %></td>
+        </tr>
+        <tr>
+          <tr>
+            <td>
+              
+
+
+            </td>
+          </tr>
+          <td>_________</td>
+        </tr>
+
+        <tr>
+          <td>_________</td>
+        </tr>
+      <% end %>
+    </table>
+
+  </body>
+</html>

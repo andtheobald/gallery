@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root 'welcome#home'
   get 'gallery/start', to: 'gallery#start'
   get 'gallery/example', to: 'gallery#example'
+
+  resources :exhibits
 end
