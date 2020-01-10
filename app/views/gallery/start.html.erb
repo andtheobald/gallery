@@ -12,6 +12,11 @@
     <div style="text-align:center">
       <%= link_to 'View a finished Gallery', exhibits_path, class:"galleryButton"%>
     </div>
-    
+    <% @artworks.each do |x| %>
+      <%= x %> <br>
+    <% end %>
+
+
+
   </body>
 </html>

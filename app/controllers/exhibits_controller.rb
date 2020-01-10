@@ -1,6 +1,5 @@
 class ExhibitsController < ApplicationController
-  before_action :set_exhibit, only: [:edit, :update, :show, :destroy]
-
+  before_action :set_exhibit, only: [:edit, :update, :show, :destroy, :add_to_gallery]
 
 
   def index
@@ -36,6 +35,17 @@ class ExhibitsController < ApplicationController
     flash[:notice] = "Exhibit was successfully deleted"
     redirect_to exhibits_path
   end
+
+  def edit
+  end
+
+  def add_to_gallery(exhibit_params)
+    add_to_personal_gallery(params[:id])
+
+    redirect_to exhibits_path
+
+  end
+
 
   private
     def exhibit_params

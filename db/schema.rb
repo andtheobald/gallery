@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_09_114010) do
+ActiveRecord::Schema.define(version: 2020_01_09_175316) do
 
   create_table "exhibits", force: :cascade do |t|
+    t.string "img_url"
+    t.string "artwork_name"
+    t.string "artist_name"
+    t.text "information"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pgallerys", force: :cascade do |t|
     t.string "img_url"
     t.string "artwork_name"
     t.string "artist_name"
