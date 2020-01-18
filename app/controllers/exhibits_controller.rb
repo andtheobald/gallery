@@ -39,8 +39,8 @@ class ExhibitsController < ApplicationController
   def edit
   end
 
-  def add_to_gallery(exhibit_params)
-    add_to_personal_gallery(params[:id])
+  def add_to_gallery
+    addgallery(params[:id])
 
     redirect_to exhibits_path
 

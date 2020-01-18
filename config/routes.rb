@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'gallery/start', to: 'gallery#start'
   get 'gallery/example', to: 'gallery#example'
 
-  get 'exhibit/add_to_gallery', to: 'exhibit#add_to_gallery'
+  get 'exhibit/addgallery', to: 'exhibit#addgallery'
 
   resources :exhibits
 end
