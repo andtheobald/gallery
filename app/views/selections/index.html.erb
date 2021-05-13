@@ -19,7 +19,7 @@
     <table width="600" align="center">
       <% @selections = Selection.all %>
       <% @selections.each do |selection| %>
-      <% if @exhibit = Exhibit.find(selection.exhibitID) %>
+      <% if @exhibit = Exhibit.find(selection.exhibit_id) %>
 
         <tr>
           <td colspan="2" align="center"><%= link_to image_tag(@exhibit.img_url, class: "galleryImage"), exhibit_path(@exhibit) %></td>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_12_021649) do
+ActiveRecord::Schema.define(version: 2021_05_13_152826) do
 
   create_table "exhibits", force: :cascade do |t|
     t.string "img_url"
@@ -31,9 +31,11 @@ ActiveRecord::Schema.define(version: 2021_05_12_021649) do
   end
 
   create_table "selections", force: :cascade do |t|
-    t.integer "exhibitID"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "exhibit_id", null: false
+    t.index ["exhibit_id"], name: "index_selections_on_exhibit_id"
   end
 
+  add_foreign_key "selections", "exhibits"
 end

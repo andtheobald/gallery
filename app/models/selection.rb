@@ -1,3 +1,4 @@
 class Selection < ApplicationRecord
-  validates :exhibitID, presence: true#, uniqueness: true
+  belongs_to :exhibit
+  #validates :exhibitID, presence: true#, uniqueness: true
 end

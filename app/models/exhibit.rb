@@ -1,4 +1,7 @@
 class Exhibit < ApplicationRecord
+
+  has_many :selections, dependent: :destroy
+
   validates :img_url, presence: true, uniqueness: true
   validates :artwork_name, presence: true
   validates :artist_name, presence: true

@@ -7,7 +7,7 @@ class SelectionsController < ApplicationController
   end
 
   def adding
-    @selection = Selection.new(exhibitID: params[:id])
+    @selection = Selection.new(exhibit_id: params[:id])
     if @selection.save
       flash[:notice] = "Exhibit was successfully added to your selection"
     end
@@ -22,7 +22,7 @@ class SelectionsController < ApplicationController
     #render 'app/views/exhibits'
   end
   def create
-    @selection = Selection.new(exhibitID)
+    @selection = Selection.new(exhibit_id)
     if @selection.save
       flash[:notice] = "Exhibit was successfully added to your selection"
     else
@@ -40,7 +40,7 @@ class SelectionsController < ApplicationController
   end
 
     def selection_params
-      params.permit(:exhibitID)
+      params.permit(:exhibit_id)
     end
     #def selection_params
     #  params.require(:selection).permit(:exhibitID)
