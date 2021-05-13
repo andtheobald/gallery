@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body class="galleryBody">
+    <div>
+      <%= link_to 'Home', root_path, class:"homeButton" %>
+      <h1 style="text-align:center">Your personal gallery</h1>
+      <p><br></p>
+    </div>
+
+    <div style="text-align:center">
+      <%= link_to 'View all exhibits', exhibits_path, class:"galleryButton"%>
+
+    </div>
+<br><br>
+    <table width="600" align="center">
+      <% @selections = Selection.all %>
+      <% @selections.each do |selection| %>
+      <% if @exhibit = Exhibit.find(selection.exhibitID) %>
+
+        <tr>
+          <td colspan="2" align="center"><%= link_to image_tag(@exhibit.img_url, class: "galleryImage"), exhibit_path(@exhibit) %></td>
+        </tr>
+
+        <tr>
+          <td><%= @exhibit.artwork_name %></td>
+          <td><%= @exhibit.artist_name %></td>
+        </tr>
+        <tr>
+          <td colspan="2"><%= @exhibit.information %><br></td>
+        </tr>
+        <tr>
+          <td><br></td>
+        </tr>
+        <tr>
+          <td align="right"><%= link_to 'Remove', selection_path(selection.id), method: :delete, data: {confirm: "Are you sure you want to remove this exhibit from your gallery?"}, class:"deleteButton" %></td>
+        </tr>
+        <tr>
+          <td>_________</td>
+        </tr>
+
+        <tr>
+          <td>_________</td>
+        </tr>
+      <% else %>
+      <% end %>
+      <% end %>
+    </table>
+
+
+
+  </body>
+</html>

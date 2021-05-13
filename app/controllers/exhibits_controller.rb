@@ -1,6 +1,9 @@
 class ExhibitsController < ApplicationController
   before_action :set_exhibit, only: [:edit, :update, :show, :destroy, :add_to_gallery]
 
+  #Natürlich ist hier "http_basic_authenticate_with" nur zur Demo / Testzwecken verwendet, da keine User accs mit verschlüsselten Passwörtern etc in dieser Version sind
+  http_basic_authenticate_with name: "EasyAcc", password: "Sternburg", except: [:index, :show]
+
 
   def index
     @exhibits = Exhibit.all
@@ -39,6 +42,10 @@ class ExhibitsController < ApplicationController
   def edit
   end
 
+  def add_exhibit
+
+  end
+
   def add_to_gallery
     addgallery(params[:id])
 
@@ -50,6 +57,7 @@ class ExhibitsController < ApplicationController
   private
     def exhibit_params
       params.require(:exhibit).permit(:img_url, :artwork_name, :artist_name, :information)
+      #params.permit(:img_url, :artwork_name, :artist_name, :information)
     end
 
     def set_exhibit

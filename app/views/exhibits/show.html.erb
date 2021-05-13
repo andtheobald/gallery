@@ -1,3 +1,3 @@
-<%= link_to "Back to the gallery", exhibits_path %><br>
+<%= link_to "Back to the gallery", :back %><br>
 
-<%= link_to image_tag(@exhibit.img_url, class: "galleryImage"), exhibits_path %>
+<%= link_to image_tag(@exhibit.img_url, class: "galleryImage"), :back %>

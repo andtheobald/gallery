@@ -51,14 +51,23 @@ html {
   text-align: center;
 }
 .homeButton {
-  font-weight: 500;
+  text-decoration: none;
+  font-size: 30px;
+  margin: 10px;
+  font-weight: bold;
+  padding: 30px;
   color: #191e3f;
-  font-family: "EmojiSymbols";
+  font-family: "Courier New";
 }
 .galleryImage {
   max-width: 100%;
   max-height: auto;
+  margin: auto;
+}
+.tableBox {
+  border: 2px solid rgba(0, 0, 0, 0.5);
 }
 td {
   min-width: 150px;
+  min-height: 10px;
 }
