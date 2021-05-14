@@ -16,8 +16,9 @@
     <ul>
       <%= form_for @exhibit do |f| %>
         <p>
-          <%= f.label :img_url %><br>
-          <%= f.text_field :img_url %>
+          <%= f.select :img_url, ['DP169472.jpg', 'DP146499.jpg', 'DT11964.jpg', 'DT1964.jpg', 'DP231550.jpg', 'DP116165.jpg', 'ecce-o.jpg', 'ecce.jpg']%>
+          <%#= f.label :img_url %><br>
+          <%#= f.text_field :img_url %>
         </p>
         <p>
           <%= f.label :artwork_name %><br>
