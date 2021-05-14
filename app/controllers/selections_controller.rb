@@ -1,36 +1,26 @@
 class SelectionsController < ApplicationController
-  before_action :set_selection, only: [:show, :destroy]
+  before_action :set_selection, only: [:destroy]
 
 
-  def index
-    @selections = Selection.all
-  end
+##################################################################################################################
+#
+#   Bei der methode "adding" habe ich noch Probleme die 'strong parameters' über die selection_params zu übergeben
+#
+##################################################################################################################
 
   def adding
     @selection = Selection.new(exhibit_id: params[:id])
-    if @selection.save
-      flash[:notice] = "Exhibit was successfully added to your selection"
-    end
-    redirect_back(fallback_location: root_path)
-  end
-
-  def new
-    @selection = Selection.new(params[:id])
-    if @selection.save
-      flash[:notice] = "Exhibit was successfully added to your selection"
-    end
-    #render 'app/views/exhibits'
-  end
-  def create
-    @selection = Selection.new(exhibit_id)
+    #@selection = Selection.new(selection_params)
     if @selection.save
       flash[:notice] = "Exhibit was successfully added to your selection"
     else
-      render 'new'
+      if @selection.errors.any?
+        @selection.errors.full_messages.each do |msg|
+        flash[:notice] = "#{msg}"
+        end
+      end
     end
-  end
-
-  def show
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
@@ -39,11 +29,17 @@ class SelectionsController < ApplicationController
     redirect_to selections_path
   end
 
-    def selection_params
-      params.permit(:exhibit_id)
-    end
+  def clear
+    Selection.delete_all
+    redirect_to selections_path
+  end
+
+  private
     #def selection_params
-    #  params.require(:selection).permit(:exhibitID)
+    #  params.permit(:exhibit_id)
+    #end
+    #def selection_params
+    #  params.require(:selection).permit(:exhibit_id)
     #end
 
     def set_selection

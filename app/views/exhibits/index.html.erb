@@ -5,7 +5,6 @@
     <title></title>
   </head>
   <body class="galleryBody">
-    <%= link_to 'Home', root_path, class:"homeButton" %>
     <h1 style="text-align:center">Gallery Overview</h1>
     <div style="text-align:right">
       <%= link_to 'New Artwork', new_exhibit_path, class:"galleryButton"%>
@@ -18,26 +17,18 @@
     <table width="600" align="center">
 
       <% @exhibits.each do |exhibit| %>
-
         <tr>
-
           <td colspan="3" height="100" align="center"><%= link_to 'Add to your gallery', adding_path(exhibit), class:"galleryButton" %></td>
-
-
         </tr>
-
         <tr>
-
           <td colspan="2" align="center"><%= link_to image_tag(exhibit.img_url, class: "galleryImage"), exhibit_path(exhibit) %></td>
-
-
         </tr>
         <tr>
-          <td><%= exhibit.artwork_name %></td>
+          <td><strong><%= exhibit.artwork_name %></strong></td>
           <td><%= exhibit.artist_name %></td>
         </tr>
         <tr>
-          <td colspan="2"><%= exhibit.information %></td>
+          <td colspan="2"><br><%= exhibit.information %><br></td>
         </tr>
         <tr>
           <td><br></td>
@@ -46,6 +37,7 @@
           <td align="center"><%= link_to 'Delete', exhibit_path(exhibit), method: :delete, data: {confirm: "Are you sure you want to delete this exhibit from the Database?"}, class:"deleteButton" %></td>
           <td align="center"><%= link_to 'Edit', edit_exhibit_path(exhibit), class:"deleteButton" %></td>
         </tr>
+        <%# Hier wollte ich eigentlich mit dem <hr> tag oder einer Box mit css-Border arbeiten, aber aus einem Grund, der mit nicht klar ist, werden diese Elemente nicht in der Loop, sondern vor der Loop x-mal gerendert %>
         <tr>
           <td align="center" colspan="2">___________________________________</td>
         </tr>

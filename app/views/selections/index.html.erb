@@ -6,31 +6,32 @@
   </head>
   <body class="galleryBody">
     <div>
-      <%= link_to 'Home', root_path, class:"homeButton" %>
       <h1 style="text-align:center">Your personal gallery</h1>
       <p><br></p>
     </div>
 
     <div style="text-align:center">
-      <%= link_to 'View all exhibits', exhibits_path, class:"galleryButton"%>
-
+    <p><%= link_to 'View all exhibits', exhibits_path, class:"galleryButton"%></p><br><br><br>
+    <% if Selection.count == 0 %>
+      <p class="bigText"> You currently have no exhibits in your personal gallery. <br>Choose some from the exhibit overview to show them here. </p>
+    <% else %>
+    <p><%= link_to 'Remove all exhibits from your gallery', clear_selection_path, data:{confirm: "Do you want to remove all exhibits from your personal gallery?"}, class:"deleteButton"%></p>
+    <% end %>
     </div>
 <br><br>
     <table width="600" align="center">
       <% @selections = Selection.all %>
       <% @selections.each do |selection| %>
-      <% if @exhibit = Exhibit.find(selection.exhibit_id) %>
-
+      <% @exhibit = Exhibit.find(selection.exhibit_id) %>
         <tr>
           <td colspan="2" align="center"><%= link_to image_tag(@exhibit.img_url, class: "galleryImage"), exhibit_path(@exhibit) %></td>
         </tr>
-
         <tr>
-          <td><%= @exhibit.artwork_name %></td>
+          <td><strong><%= @exhibit.artwork_name %></strong></td>
           <td><%= @exhibit.artist_name %></td>
         </tr>
         <tr>
-          <td colspan="2"><%= @exhibit.information %><br></td>
+          <td colspan="2"><br><%= @exhibit.information %><br></td>
         </tr>
         <tr>
           <td><br></td>
@@ -39,14 +40,13 @@
           <td align="right"><%= link_to 'Remove', selection_path(selection.id), method: :delete, data: {confirm: "Are you sure you want to remove this exhibit from your gallery?"}, class:"deleteButton" %></td>
         </tr>
         <tr>
-          <td>_________</td>
-        </tr>
-
-        <tr>
-          <td>_________</td>
-        </tr>
-      <% else %>
-      <% end %>
+          <%# Hier wollte ich eigentlich mit dem <hr> tag oder einer Box mit css-Border arbeiten, aber aus einem Grund, der mit nicht klar ist, werden diese Elemente nicht in der Loop, sondern vor der Loop x-mal gerendert %>
+          <tr>
+            <td align="center" colspan="2">___________________________________</td>
+          </tr>
+          <tr>
+            <td align="center" colspan="2">___________________________________</td>
+          </tr>
       <% end %>
     </table>
 

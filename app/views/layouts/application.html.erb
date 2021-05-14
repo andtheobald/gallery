@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Gallery</title>
+    <title>Your personal gallery</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,7 @@
   </head>
 
   <body>
+    <%= link_to 'Home', root_path, class:"homeButton" %>
     <%= render 'layouts/messages' %>
     <%= yield %>
   </body>
