@@ -52,6 +52,7 @@ end
 
 group :production do
   #postgress sql for production
+  gem 'rails_12factor'
   gem 'pg'
 end
 
